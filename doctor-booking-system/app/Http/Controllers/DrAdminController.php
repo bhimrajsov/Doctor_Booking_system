@@ -208,7 +208,7 @@ class DrAdminController extends Controller
 
             $doctors = Doctor::where('id', $admin->id)->get();
 
-            return response()->json(['doctor' => $doctors], 200);
+            return response()->json(['message' => 'Get Admin Details Successfully', 'doctor' => $doctors], 200);
         } catch (\Exception $exception) {
             return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
         }
@@ -218,7 +218,7 @@ class DrAdminController extends Controller
     {
         try {
             $doctors = Doctor::all();
-            return response()->json(['doctors' => $doctors], 200);
+            return response()->json(['message' => 'Get All Admin Details Successfully', 'doctors' => $doctors], 200);
         } catch (\Exception $exception) {
             return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
         }
