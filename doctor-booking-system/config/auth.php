@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'doctor', // Use the appropriate provider (e.g., 'users' for the User model)
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'doctor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Doctor::class,
         ],
 
         // 'users' => [
