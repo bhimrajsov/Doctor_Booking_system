@@ -5,18 +5,19 @@
    - [Project Overview](#project-overview)
    - [Description](#description)
    - [Important Notes](#important-notes)
-2. [Authentication](#authentication)
-3. [Appointment Module](#appointment-module)
+2. [Database Schema](#DatabaseSchema)
+3. [Authentication](#authentication)
+4. [Appointment Module](#appointment-module)
    - [Create Appointment](#create-appointment)
    - [Update Appointment](#update-appointment)
    - [Doctor Update Status of Appointment](#doctor-update-status-of-appointment)
    - [View List of Appointments](#view-list-of-appointments)
-4. [Doctor Module](#doctor-module)
+5. [Doctor Module](#doctor-module)
    - [Create Doctor](#create-doctor)
    - [Update Doctor Info](#update-doctor-info)
    - [View Appointments](#view-appointments)
    - [Update Status of Appointment (Doctor)](#update-status-of-appointment-doctor)
-5. [Patient / User Module](#patient--user-module)
+6. [Patient / User Module](#patient--user-module)
    - [Create Patient](#create-patient)
    - [Update Patient Info](#update-patient-info)
    - [User Login](#user-login)
@@ -37,6 +38,8 @@ This documentation outlines the Doctor Booking System's APIs and their functiona
 - The project follows a specific design pattern, as described in the README.md file.
 - Detailed database schema designs are available within the project.
 
+## Database Schema for Doctor
+![Database Schema ](\doctor_database_schema.png)
 ## Authentication
 
 To access the APIs, users must be authenticated. Unauthorized access is restricted.
