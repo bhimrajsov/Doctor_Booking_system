@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -14,33 +13,37 @@ class DrAdminController extends Controller
 
     public function adminLogin(Request $request)
     {
-        $this->validate($request, [
-            'email' => 'required|string',
-            'password' => 'required|string',
+        try {
+            $this->validate($request, [
+                'email' => 'required|string',
+                'password' => 'required|string',
 
-        ]);
+            ]);
 
-        $password = $request->input('password');
-        $email = $request->input('email');
-        //    $token = $request->input('token');
-        $result = Doctor::where('email', '=', $email)->first();
+            $password = $request->input('password');
+            $email = $request->input('email');
+            //    $token = $request->input('token');
+            $result = Doctor::where('email', '=', $email)->first();
 
-        if ($result == "") {
+            if ($result == "") {
 
-            return response()->json(['message' => 'Doctor email and password not valid !'], 401);
-        }
-
-        if (!is_null($result) || $result != "") {
-            if (Hash::check($password, $result->password)) {
-
-                // $tdata =  DB::table('admin')->where('email', $email)->update(['device_token' => $token]);
-                $data = Doctor::where('email', $email)->first();
-
-                return response()->json(['message' => 'Doctor login successfully', 'result' => $data], 200);
-            } else {
                 return response()->json(['message' => 'Doctor email and password not valid !'], 401);
             }
 
+            if (!is_null($result) || $result != "") {
+                if (Hash::check($password, $result->password)) {
+
+                    // $tdata =  DB::table('admin')->where('email', $email)->update(['device_token' => $token]);
+                    $data = Doctor::where('email', $email)->first();
+
+                    return response()->json(['message' => 'Doctor login successfully', 'result' => $data], 200);
+                } else {
+                    return response()->json(['message' => 'Doctor email and password not valid !'], 401);
+                }
+
+            }
+        } catch (\Exception $exception) {
+            return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
         }
     }
 
@@ -51,13 +54,13 @@ class DrAdminController extends Controller
     //             'email' => 'required|string',
     //             'password' => 'required|string',
     //         ]);
-    
+
     //         // Attempt to authenticate the user
     //         if (auth()->attempt($request->only('email', 'password'))) {
     //             // Authentication successful
     //             $token = auth()->user()->createToken('authToken')->accessToken;
     //             $doctor = Doctor::where('email', $request->email)->first();
-    
+
     //             return response()->json(['data' => $doctor, 'access_token' => $token], 200);
     //         } else {
     //             // Authentication failed
@@ -67,7 +70,6 @@ class DrAdminController extends Controller
     //         return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
     //     }
     // }
-    
 
     public function adminUpdate(Request $request)
     {

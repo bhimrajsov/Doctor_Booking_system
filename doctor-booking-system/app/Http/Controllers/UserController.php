@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,32 +77,37 @@ class UserController extends Controller
 
     public function userLogin(Request $request)
     {
-        $this->validate($request, [
-            'email' => 'required|string',
-            'password' => 'required|string',
+        try {
+            $this->validate($request, [
+                'email' => 'required|string',
+                'password' => 'required|string',
 
-        ]);
+            ]);
 
-        $password = $request->input('password');
-        $email = $request->input('email');
-        $result = User::where('email', '=', $email)->first();
+            $password = $request->input('password');
+            $email = $request->input('email');
+            $result = User::where('email', '=', $email)->first();
 
-        if ($result == "") {
+            if ($result == "") {
 
-            return response()->json(['message' => 'Doctor email and password not valid !'], 401);
-        }
-
-        if (!is_null($result) || $result != "") {
-            if (Hash::check($password, $result->password)) {
-
-                // $tdata =  DB::table('admin')->where('email', $email)->update(['device_token' => $token]);
-                $data = User::where('email', $email)->first();
-
-                return response()->json(['message' => 'Doctor login successfully', 'result' => $data], 200);
-            } else {
                 return response()->json(['message' => 'Doctor email and password not valid !'], 401);
             }
 
+            if (!is_null($result) || $result != "") {
+                if (Hash::check($password, $result->password)) {
+
+                    // $tdata =  DB::table('admin')->where('email', $email)->update(['device_token' => $token]);
+                    $data = User::where('email', $email)->first();
+
+                    return response()->json(['message' => 'Doctor login successfully', 'result' => $data], 200);
+                } else {
+                    return response()->json(['message' => 'Doctor email and password not valid !'], 401);
+                }
+
+            }
+
+        } catch (\Exception $exception) {
+            return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
         }
     }
 
@@ -131,78 +135,94 @@ class UserController extends Controller
 
     public function getAllUser()
     {
-        $users = User::all();
-        return response()->json(['message' => 'Get All User Details Successfully', 'data' => $users], 200);
+        try {
+            $users = User::all();
+            return response()->json(['message' => 'Get All User Details Successfully', 'data' => $users], 200);
+        } catch (\Exception $exception) {
+            return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
+        }
     }
 
     public function getUserid(Request $request)
     {
+        try {
 
-        $header = $request->header('Authorization');
-        $user = User::where('device_token', $header)->first();
-        if ($user == "") {
+            $header = $request->header('Authorization');
+            $user = User::where('device_token', $header)->first();
+            if ($user == "") {
 
-            return response()->json(['message' => 'User is Invalid !'], 401);
+                return response()->json(['message' => 'User is Invalid !'], 401);
+            }
+
+            $user = User::find($user->id);
+
+            if (!$user) {
+                return response()->json(['message' => 'User not found'], 404);
+            }
+
+            return response()->json(['message' => 'Get User Details Successfully', 'data' => $user], 200);
+        } catch (\Exception $exception) {
+            return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
         }
-
-        $user = User::find($user->id);
-
-        if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
-        }
-
-        return response()->json(['message' => 'Get User Details Successfully', 'data' => $user], 200);
     }
 
     public function updateUser(Request $request)
     {
-        $header = $request->header('Authorization');
-        $user = User::where('device_token', $header)->first();
-        if ($user == "") {
-
-            return response()->json(['message' => 'User is Invalid !'], 401);
-        }
-
         try {
-            // Validate user input
-            $this->validate($request, [
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'DOB' => 'required|date',
-                'gender' => 'required|string',
-            ]);
+            $header = $request->header('Authorization');
+            $user = User::where('device_token', $header)->first();
+            if ($user == "") {
 
+                return response()->json(['message' => 'User is Invalid !'], 401);
+            }
 
-            $dateOfBirthFormatted = date('Y-m-d', strtotime($request->DOB));
+            try {
+                // Validate user input
+                $this->validate($request, [
+                    'first_name' => 'required',
+                    'last_name' => 'required',
+                    'DOB' => 'required|date',
+                    'gender' => 'required|string',
+                ]);
 
-            // Update user data
-            $user->update(['id' => $user->id],[
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'DOB' => $dateOfBirthFormatted,
-                'gender' => $request->gender, //'Male', 'Female', 'Other'
-                'address' => $request->address,
-                'weight' => $request->weight,
-                'height' => $request->height,
-            ]);
+                $dateOfBirthFormatted = date('Y-m-d', strtotime($request->DOB));
 
-            return response()->json(['message' => 'User updated successfully', 'data' => $user], 200);
+                // Update user data
+                $user->update(['id' => $user->id], [
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'DOB' => $dateOfBirthFormatted,
+                    'gender' => $request->gender, //'Male', 'Female', 'Other'
+                    'address' => $request->address,
+                    'weight' => $request->weight,
+                    'height' => $request->height,
+                ]);
+
+                return response()->json(['message' => 'User updated successfully', 'data' => $user], 200);
+            } catch (\Exception $exception) {
+                return response()->json(['message' => 'Error updating user', 'error' => $exception->getMessage()], 500);
+            }
         } catch (\Exception $exception) {
-            return response()->json(['message' => 'Error updating user', 'error' => $exception->getMessage()], 500);
+            return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
         }
     }
 
     public function userDelete(Request $request)
     {
-        $userId = $request->input('id');
-        $user = User::find($userId);
+        try {
+            $userId = $request->input('id');
+            $user = User::find($userId);
 
-        if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
+            if (!$user) {
+                return response()->json(['message' => 'User not found'], 404);
+            }
+
+            $user->delete();
+
+            return response()->json(['message' => 'User deleted successfully'], 200);
+        } catch (\Exception $exception) {
+            return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
         }
-
-        $user->delete();
-
-        return response()->json(['message' => 'User deleted successfully'], 200);
     }
+
 }
