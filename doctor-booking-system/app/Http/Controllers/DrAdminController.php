@@ -47,30 +47,6 @@ class DrAdminController extends Controller
         }
     }
 
-    // public function adminLogin(Request $request)
-    // {
-    //     try {
-    //         $this->validate($request, [
-    //             'email' => 'required|string',
-    //             'password' => 'required|string',
-    //         ]);
-
-    //         // Attempt to authenticate the user
-    //         if (auth()->attempt($request->only('email', 'password'))) {
-    //             // Authentication successful
-    //             $token = auth()->user()->createToken('authToken')->accessToken;
-    //             $doctor = Doctor::where('email', $request->email)->first();
-
-    //             return response()->json(['data' => $doctor, 'access_token' => $token], 200);
-    //         } else {
-    //             // Authentication failed
-    //             return response()->json(['message' => 'Unauthorized'], 401);
-    //         }
-    //     } catch (\Exception $exception) {
-    //         return response()->json(['status' => $exception->getCode(), 'message' => $exception->getMessage()]);
-    //     }
-    // }
-
     public function adminUpdate(Request $request)
     {
         try {

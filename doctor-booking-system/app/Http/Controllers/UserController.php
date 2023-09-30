@@ -111,28 +111,6 @@ class UserController extends Controller
         }
     }
 
-    // public function userLogin(Request $request)
-    // {
-    //     try {
-    //         $this->validate($request, [
-    //             'email' => 'required|email',
-    //             'password' => 'required|string',
-    //         ]);
-
-    //         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-    //             // Authentication successful
-    //             $user = Auth::user();
-    //             $token = $user->createToken('authToken')->accessToken;
-
-    //             return response()->json(['user' => $user, 'access_token' => $token], 200);
-    //         } else {
-    //             return response()->json(['message' => 'Invalid credentials'], 401);
-    //         }
-    //     } catch (\Exception $exception) {
-    //         return response()->json(['message' => 'Error during login', 'error' => $exception->getMessage()], 500);
-    //     }
-    // }
-
     public function getAllUser()
     {
         try {

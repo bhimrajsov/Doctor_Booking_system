@@ -39,7 +39,7 @@ This documentation outlines the Doctor Booking System's APIs and their functiona
 - Detailed database schema designs are available within the project.
 
 ## Database Schema for Doctor
-![Database Schema ](\doctor_database_schema.png)
+![Database Schema ](doctor_database_schema.png)
 ## Authentication
 
 To access the APIs, users must be authenticated. Unauthorized access is restricted.
