@@ -1,0 +1,781 @@
+{
+	"info": {
+		"_postman_id": "4c2a4870-8732-4233-a310-27385556e3b3",
+		"name": "Doctor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28750622",
+		"_collection_link": "https://burnfit.postman.co/workspace/Burnfit-Workspace~001e1e3f-32bb-4817-8b1e-5c70ff375b67/collection/28750622-4c2a4870-8732-4233-a310-27385556e3b3?action=share&source=collection_link&creator=28750622"
+	},
+	"item": [
+		{
+			"name": "doctor / admin",
+			"item": [
+				{
+					"name": "admin Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Kusum",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Gupta",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "kusumgupta@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "7738923183",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "speciality",
+									"value": "Skin",
+									"type": "text"
+								},
+								{
+									"key": "languages",
+									"value": "English and Hindi",
+									"type": "text"
+								},
+								{
+									"key": "education",
+									"value": "MBBS",
+									"type": "text"
+								},
+								{
+									"key": "DOB",
+									"value": "2002-12-13",
+									"description": "yyyy-mm-dd",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Female",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/bhimr/Downloads/doctor2.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/adminSignup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"adminSignup",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6InB1VWFKVXFyOFYyeU1SYTJJVGZoTlE9PSIsInZhbHVlIjoib3BjMDdhSWxTVnBER3dOSVBvWkthT1RMMHd6ZWwvRWRkZ1kwNms4VEp6ST0iLCJtYWMiOiI0ODIyNTFhNjczNjdhMDFkYmRhN2RlNTA0MDZjZTYxMDEwZDM5MzkxNTJiZmY3MzE2MTFlZDQzYzNkODMyOTAzIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Raju",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Yadav",
+									"type": "text"
+								},
+								{
+									"key": "speciality",
+									"value": "Teeth",
+									"type": "text"
+								},
+								{
+									"key": "languages",
+									"value": "English and Hindi",
+									"type": "text"
+								},
+								{
+									"key": "education",
+									"value": "MBBS",
+									"type": "text"
+								},
+								{
+									"key": "DOB",
+									"value": "2001-07-05",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Male",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/bhimr/Downloads/doctor`.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/adminUpdate/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"adminUpdate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "kusumgupta@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/adminLogin/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"adminLogin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Admin Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6InB1VWFKVXFyOFYyeU1SYTJJVGZoTlE9PSIsInZhbHVlIjoib3BjMDdhSWxTVnBER3dOSVBvWkthT1RMMHd6ZWwvRWRkZ1kwNms4VEp6ST0iLCJtYWMiOiI0ODIyNTFhNjczNjdhMDFkYmRhN2RlNTA0MDZjZTYxMDEwZDM5MzkxNTJiZmY3MzE2MTFlZDQzYzNkODMyOTAzIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getAdminDetails/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getAdminDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Admin Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getAllAdminDetails/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getAllAdminDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "addUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Ritik",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Jaiswal",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ritik@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "7715822605",
+									"type": "text"
+								},
+								{
+									"key": "DOB",
+									"value": "2001-01-09",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Male",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Savarkar nagar",
+									"type": "text"
+								},
+								{
+									"key": "height",
+									"value": "5.5",
+									"type": "text"
+								},
+								{
+									"key": "weight",
+									"value": "75.5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addUser/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addUser",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ritik@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/userLogin/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"userLogin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getAllUser/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getAllUser",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Userid",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6ImV3ZUZReHB4cUNGTWdsdGJwOGtJd1E9PSIsInZhbHVlIjoiZkNDS2gxWTI1ellBRXd0WGhPa3BXM1JKSGtQa2kxN0p3ais5aFA2THk2QT0iLCJtYWMiOiIyMTYyNmRiMjhjMTcxY2MyMmU5OGRkOTkzODVmMTNlYzI2Yzc1NWY5YTQ0YzkwMTA1MjNkNGUyNTA2MzI0ZjJmIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getUserid/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getUserid",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6ImV3ZUZReHB4cUNGTWdsdGJwOGtJd1E9PSIsInZhbHVlIjoiZkNDS2gxWTI1ellBRXd0WGhPa3BXM1JKSGtQa2kxN0p3ais5aFA2THk2QT0iLCJtYWMiOiIyMTYyNmRiMjhjMTcxY2MyMmU5OGRkOTkzODVmMTNlYzI2Yzc1NWY5YTQ0YzkwMTA1MjNkNGUyNTA2MzI0ZjJmIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Ritik",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Jaiswal",
+									"type": "text"
+								},
+								{
+									"key": "DOB",
+									"value": "2001-01-09",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Male",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Savarkar nagar",
+									"type": "text"
+								},
+								{
+									"key": "height",
+									"value": "5.5",
+									"type": "text"
+								},
+								{
+									"key": "weight",
+									"value": "75.5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/updateUser/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"updateUser",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "add Appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6ImV3ZUZReHB4cUNGTWdsdGJwOGtJd1E9PSIsInZhbHVlIjoiZkNDS2gxWTI1ellBRXd0WGhPa3BXM1JKSGtQa2kxN0p3ais5aFA2THk2QT0iLCJtYWMiOiIyMTYyNmRiMjhjMTcxY2MyMmU5OGRkOTkzODVmMTNlYzI2Yzc1NWY5YTQ0YzkwMTA1MjNkNGUyNTA2MzI0ZjJmIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "doctor_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "appointment_date",
+									"value": "2023-10-01",
+									"type": "text"
+								},
+								{
+									"key": "appointment_start_time",
+									"value": "12:30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addAppointment/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addAppointment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6ImV3ZUZReHB4cUNGTWdsdGJwOGtJd1E9PSIsInZhbHVlIjoiZkNDS2gxWTI1ellBRXd0WGhPa3BXM1JKSGtQa2kxN0p3ais5aFA2THk2QT0iLCJtYWMiOiIyMTYyNmRiMjhjMTcxY2MyMmU5OGRkOTkzODVmMTNlYzI2Yzc1NWY5YTQ0YzkwMTA1MjNkNGUyNTA2MzI0ZjJmIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "appointment_date",
+									"value": "2023-10-01",
+									"type": "text"
+								},
+								{
+									"key": "appointment_start_time",
+									"value": "01:30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/updateAppointment/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"updateAppointment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list All Appointments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date",
+									"value": "2023-10-01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/listAllAppointments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"listAllAppointments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list Appointments By Doctor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6InB1VWFKVXFyOFYyeU1SYTJJVGZoTlE9PSIsInZhbHVlIjoib3BjMDdhSWxTVnBER3dOSVBvWkthT1RMMHd6ZWwvRWRkZ1kwNms4VEp6ST0iLCJtYWMiOiI0ODIyNTFhNjczNjdhMDFkYmRhN2RlNTA0MDZjZTYxMDEwZDM5MzkxNTJiZmY3MzE2MTFlZDQzYzNkODMyOTAzIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date",
+									"value": "2023-10-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/listAppointmentsByDoctor/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"listAppointmentsByDoctor",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list Appointments By User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6ImV3ZUZReHB4cUNGTWdsdGJwOGtJd1E9PSIsInZhbHVlIjoiZkNDS2gxWTI1ellBRXd0WGhPa3BXM1JKSGtQa2kxN0p3ais5aFA2THk2QT0iLCJtYWMiOiIyMTYyNmRiMjhjMTcxY2MyMmU5OGRkOTkzODVmMTNlYzI2Yzc1NWY5YTQ0YzkwMTA1MjNkNGUyNTA2MzI0ZjJmIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date",
+									"value": "2023-10-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/listAppointmentsByUser/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"listAppointmentsByUser",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJpdiI6InB1VWFKVXFyOFYyeU1SYTJJVGZoTlE9PSIsInZhbHVlIjoib3BjMDdhSWxTVnBER3dOSVBvWkthT1RMMHd6ZWwvRWRkZ1kwNms4VEp6ST0iLCJtYWMiOiI0ODIyNTFhNjczNjdhMDFkYmRhN2RlNTA0MDZjZTYxMDEwZDM5MzkxNTJiZmY3MzE2MTFlZDQzYzNkODMyOTAzIiwidGFnIjoiIn0=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "postponed",
+									"description": "approved, cancelled, postponed",
+									"type": "text"
+								},
+								{
+									"key": "appointment_date",
+									"value": "2023-10-02",
+									"type": "text"
+								},
+								{
+									"key": "appointment_start_time",
+									"value": "02:30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/changeStatus/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"changeStatus",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
